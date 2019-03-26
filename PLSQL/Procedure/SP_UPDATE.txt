@@ -1,0 +1,186 @@
+-----------------------procedure UPDATE ROLE --------------------------
+
+CREATE OR REPLACE PROCEDURE SP_UpdateRole (   
+ r_id IN role.id%type,  
+ r_name IN role.name%type)  
+IS  
+BEGIN  
+ UPDATE role SET name=r_name WHERE id=r_id;  
+COMMIT;  
+END;
+
+begin
+ SP_UpdateRole('1', 'kepala');
+end;
+
+------------------procedure UPDATE MASTERUSER -------------------------
+
+CREATE OR REPLACE PROCEDURE SP_updatemasteruser (   
+ u_id IN masteruser.id%type,  
+ u_name IN masteruser.name%type,
+ u_salary IN masteruser.salary%type)  
+IS  
+BEGIN  
+ UPDATE masteruser SET name=u_name, salary=u_salary  WHERE id=u_id;  
+COMMIT;  
+END;
+
+begin
+ SP_updatemasteruser('140909', 'Pambayun Rizal', 3000000);
+end;
+
+
+-----------------procedure UPDATE TRAVELREQUEST 1------------------------
+
+CREATE OR REPLACE PROCEDURE SP_updatetravelrequest (   
+ u_id IN travelrequest.id%type,  
+ u_notes IN travelrequest.notes%type,
+ u_status IN travelrequest.status%type)  
+IS  
+BEGIN  
+ UPDATE travelrequest SET notes=u_notes, status=u_status  WHERE id=u_id;
+ updateWages(u_id);  
+COMMIT;  
+END;
+
+begin
+ SP_updatetravelrequest ('111', 'aku cinta metrodata', 'reject');
+end;
+
+-----------------procedure UPDATE TRAVELREQUEST FINAL ------------------------
+
+CREATE OR REPLACE PROCEDURE SP_updatetravelrequest (   
+ u_id IN travelrequest.id%type,  
+ u_notes IN travelrequest.notes%type,
+ u_status IN travelrequest.status%type)  
+IS  
+BEGIN  
+ UPDATE travelrequest SET notes=u_notes, status=u_status  WHERE id=u_id;  
+COMMIT;  
+END;
+
+begin
+ SP_updatetravelrequest ('111', 'Campus Hiring UGM', 'Submit');
+end;
+
+-----------------procedure  UPDATE MASTERCOMPANY ------------------------
+
+CREATE OR REPLACE PROCEDURE SP_updatemastercompany(   
+ u_id IN mastercompany .id%type,  
+ u_name IN mastercompany .name%type)
+
+IS  
+BEGIN  
+ UPDATE mastercompany  SET name=u_name WHERE id=u_id;  
+COMMIT;  
+END;
+
+begin
+ SP_updatemastercompany  ('6', 'PT. METRODATA');
+end;
+
+----------------procedure UPDATE MASTERDEPARTMENT -----------------------
+
+CREATE OR REPLACE PROCEDURE SP_updatemasterdepartment(   
+ u_id IN masterdepartment.id%type,  
+ u_companyId IN masterdepartment .company_id%type)
+
+IS  
+BEGIN  
+ UPDATE masterdepartment  SET company_id=u_companyId WHERE id=u_id;  
+COMMIT;  
+END;
+
+begin
+ SP_updatemasterdepartment (5, 2);
+end;
+
+--------------------procedure UPDATE MASTERSO -------------------------
+
+CREATE OR REPLACE PROCEDURE SP_updatemasterso(   
+ u_id IN masterso.id%type,  
+ u_name IN masterso.name%type)
+IS  
+BEGIN  
+ UPDATE masterso  SET name=u_name WHERE id=u_id;  
+COMMIT;  
+END;
+
+begin
+ SP_updatemasterso (1,'IKON');
+end;
+
+
+--------------procedure UPDATE ADVANCE PAYMENT ----------------------
+
+CREATE OR REPLACE PROCEDURE SP_updateadvancepayment(   
+ u_id IN advancepayment.id%type,  
+ u_status IN advancepayment.status%type)
+IS  
+BEGIN  
+ UPDATE advancepayment SET status=u_status WHERE id=u_id;  
+COMMIT;  
+END;
+
+begin
+ SP_updateadvancepayment(2, 1);
+
+---------------procedure UPDATE MASTERVILLAGE ----------------------
+
+CREATE OR REPLACE PROCEDURE SP_updatemastervillage(   
+ u_id IN mastervillage.id%type,  
+ u_name IN mastervillage.name%type)
+IS  
+BEGIN  
+ UPDATE mastervillage SET name=u_name WHERE id=u_id;  
+COMMIT;  
+END;
+
+begin
+ SP_updatemastervillage(2, 'Bandarharjo');
+end;
+
+------------------ UPDATE MASTERSUBDISTRICT ----------------------
+
+CREATE OR REPLACE PROCEDURE SP_UpdateMasterSubistrict(   
+ u_id IN mastersubdistrict.id%type,  
+ u_name IN mastersubdistrict.name%type)
+IS  
+BEGIN  
+ UPDATE mastersubdistrict SET name=u_name WHERE id=u_id;  
+COMMIT;  
+END;
+
+begin
+ SP_UpdateMasterSubistrict(1, 'Semarang Utara');
+end;
+
+---------------    UPDATE MASTERDISTRICT -----------------------
+
+CREATE OR REPLACE PROCEDURE SP_UpdateMasterDistrict(   
+ u_id IN masterdistrict.id%type,  
+ u_name IN masterdistrict.name%type)
+IS  
+BEGIN  
+ UPDATE masterdistrict SET name=u_name WHERE id=u_id;  
+COMMIT;  
+END;
+
+begin
+ SP_UpdateMasterDistrict(4, 'Medan');
+end;
+
+------------------- UPDATE MASTERPROVINCE ----------------------
+
+CREATE OR REPLACE PROCEDURE SP_UpdateMasterProvince(   
+ u_id IN masterprovince.id%type,  
+ u_name IN masterprovince.name%type)
+IS  
+BEGIN  
+ UPDATE masterprovince SET name=u_name WHERE id=u_id;  
+COMMIT;  
+END;
+
+begin
+ SP_UpdateMasterProvince(11, 'Jawa Barat');
+end;

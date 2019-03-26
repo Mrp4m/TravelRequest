@@ -1,0 +1,15 @@
+create or replace TRIGGER TR_ptautonumber
+  BEFORE INSERT ON parametertable
+  FOR EACH ROW
+  BEGIN
+  SELECT nextidpt.NEXTVAL
+  INTO :NEW.Id FROM dual;
+  END;?
+
+create or replace TRIGGER TR_TravelByrAutonumber
+  BEFORE INSERT ON MasterTravelBy
+  FOR EACH ROW
+  BEGIN
+  SELECT TravelBy_IdSeq.NEXTVAL
+  INTO :NEW.Id FROM DUAL;
+  END;?

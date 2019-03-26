@@ -1,0 +1,219 @@
+//-------Insert Table Advance Payment--------\\
+
+create or replace procedure SP_insertadvancepayment(
+     a_id IN advancepayment.id%type,
+     a_status IN advancepayment.status%type)   
+is 
+begin
+
+ insert into advancepayment (id, status)
+ values (a_id, a_status);
+commit;
+end;
+
+//-------Insert Table MasterCompany--------\\
+
+create or replace procedure SP_insertmastercompany(
+     c_id IN mastercompany.id%type,
+     c_name IN mastercompany.name%type)
+is 
+begin
+
+ insert into mastercompany (id, name)
+ values (c_id, c_name);
+commit;
+end;
+
+//-------Insert Table MasterCondition--------\\
+
+create or replace procedure SP_insertmastercondition(
+     c_id IN mastercondition.id%type,
+     c_name IN mastercondition.name%type,
+     c_purposeId IN mastercondition.purpose_id%type)   
+is 
+begin
+
+ insert into mastercondition (id, name, purpose_id )
+ values (c_id, c_name, c_purposeId);
+commit;
+end;
+
+//-------Insert Table MasterDepartment--------\\
+
+create or replace procedure SP_insertmasterdepartment(
+     d_id IN masterdepartment.id%type,
+     d_name IN masterdepartment.name%type,
+     d_companyId IN masterdepartment.company_id%type)
+is 
+begin
+
+ insert into masterdepartment (id, name, company_id)
+ values (d_id, d_name, d_companyId);
+commit;
+end;
+
+//-------Insert Table MasterDistrict--------\\
+
+create or replace procedure SP_insertmasterDistrict(
+     d_id IN masterDistrict.id%type,
+     d_name IN masterDistrict.name%type,
+     d_provinceId IN masterDistrict.province_id%type)   
+is 
+begin
+
+ insert into masterDistrict(id, name, province_id )
+ values (d_id, d_name, d_provinceId );
+commit;
+end;
+
+//-------Insert Table MasterProvince--------\\
+
+create or replace procedure SP_insertmasterprovince(
+     p_id IN masterprovince.id%type,
+     p_name IN masterprovince.name%type)   
+is 
+begin
+
+ insert into masterprovince(id, name)
+ values (p_id, p_name);
+commit;
+end;
+
+//-------Insert Table MasterPurpose--------\\
+
+create or replace procedure SP_insertmasterpurpose(
+     p_id IN masterpurpose.id%type,
+     p_name IN masterpurpose.name%type)   
+is 
+begin
+
+ insert into masterpurpose (id, name)
+ values (p_id, p_name);
+commit;
+end;?
+
+//-------Insert Table MasterSO--------\\
+
+create or replace procedure SP_insertmasterso(
+     s_id IN masterso.id%type,
+     s_name IN masterso.name%type)   
+is 
+begin
+
+ insert into masterso (id, name)
+ values (s_id, s_name);
+commit;
+end;
+
+//-------Insert Table MasterSubDistrict--------\\
+
+create or replace procedure SP_insertmastersubdistrict(
+     d_id IN mastersubdistrict.id%type,
+     d_name IN mastersubdistrict.name%type,
+     d_districtId IN mastersubdistrict.district_id%type)   
+is 
+begin
+
+ insert into mastersubdistrict(id, name, district_id )
+ values (d_id, d_name, d_districtId );
+commit;
+end;
+
+//-------Insert Table MasterTravelBy--------\\
+
+create or replace procedure SP_insertmastertravelby(
+     t_id IN mastertravelby.id%type,
+     t_name IN mastertravelby.name%type)   
+is 
+begin
+
+ insert into mastertravelby (id, name)
+ values (t_id, t_name);
+commit;
+end;
+
+//-------Insert Table MasterUser--------\\
+
+create or replace PROCEDURE SP_insertMasterUser(
+       u_id IN MasterUser.ID%TYPE,
+       u_name IN MasterUser.NAME%TYPE,
+       u_contact IN MasterUser.contact%TYPE,
+       u_join_date IN MasterUser.join_date%TYPE,
+       u_password IN MasterUser.password%TYPE,
+       u_email IN MasterUser.email%TYPE,
+       u_salary IN MasterUser.salary%TYPE,
+       u_role_id IN MasterUser.role_id%TYPE,
+       u_department_id IN MasterUser.department_id%TYPE,
+       u_village_id IN MasterUser.village_id%TYPE,
+       u_manager_id IN MasterUser.manager_id%TYPE)    
+IS
+BEGIN
+
+  INSERT INTO MasterUser (ID, NAME, Contact, join_DATE, password, email, salary, role_id, department_id, village_id, manager_id)
+  VALUES (u_ID, u_NAME, u_Contact, u_join_DATE, u_password, u_email, u_salary, u_role_id, u_department_id, u_village_id, u_manager_id);
+
+
+  COMMIT;
+
+END;?
+
+//-------Insert Table MasterVillage--------\\
+
+create or replace procedure SP_insertmastervillage(
+     d_id IN mastervillage.id%type,
+     d_name IN mastervillage.name%type,
+     d_subDistrictId IN mastervillage.sub_district_id%type)   
+is 
+begin
+
+ insert into mastervillage(id, name, sub_district_id )
+ values (d_id, d_name, d_subDistrictId  );
+commit;
+end;?
+
+//-------Insert Table Role--------\\
+
+create or replace procedure SP_insertrole(
+     r_id IN role.id%type,
+     r_name IN role.name%type)
+is 
+begin
+
+ insert into role (id, name)
+ values (r_id, r_name);
+commit;
+end;
+
+//-------Insert Table TravelRequest--------\\?
+
+create or replace PROCEDURE SP_insertTravelRequest(
+       a_id IN TravelRequest.ID%TYPE,
+       notes IN TravelRequest.Notes%TYPE,
+       departure IN TravelRequest.departure%TYPE,
+       return IN TravelRequest.return%TYPE,
+       ticket IN TravelRequest.ticket%TYPE,
+       payment_message IN TravelRequest.payment_message%TYPE,
+       status IN TravelRequest.status%TYPE,
+       wages IN TravelRequest.wages%TYPE,
+       so_id IN TravelRequest.so_id%TYPE,
+       user_id IN TravelRequest.user_id%TYPE,
+       city_id IN TravelRequest.city_id%TYPE,
+       adv_payment_id IN TravelRequest.adv_payment_id%TYPE,
+       travel_id IN TravelRequest.travel_id%TYPE,
+       condition_id IN TravelRequest.condition_id%TYPE,
+    car_rental IN TravelRequest.car_rental%TYPE)
+IS
+    
+BEGIN
+  
+  INSERT INTO TravelRequest (ID, Notes, departure, return, ticket, payment_message, status, wages, so_id, user_id,city_id, adv_payment_id, travel_id, condition_id, car_rental)
+    VALUES (a_ID, Notes, departure, return, ticket, payment_message, status, wages, so_id, user_id,city_id, adv_payment_id, travel_id, condition_id, car_rental);
+
+updateWages(a_id);
+
+  COMMIT;
+
+END;?
+
+/// Notes: Travel Request
+/// jalankan dulu funtion yang ada, ada di file function sendiri

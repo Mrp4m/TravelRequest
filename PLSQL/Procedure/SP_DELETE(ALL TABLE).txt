@@ -1,0 +1,153 @@
+CREATE OR REPLACE PROCEDURE SP_delMasterTravelBy(travelBy_id IN MasterTravelby.ID%TYPE)
+IS
+BEGIN
+
+  DELETE MasterTravelBy where id = travelBy_ID;
+  
+  COMMIT;
+
+END;
+
+--------------------------------------------------------------------------------
+
+CREATE OR REPLACE PROCEDURE SP_delMasterUser(User_id IN MasterUser.ID%TYPE)
+IS
+BEGIN
+
+  DELETE MasterUser where id = User_ID;
+  
+  COMMIT;
+
+END;
+
+--------------------------------------------------------------------------------
+
+CREATE OR REPLACE PROCEDURE SP_delTravelRequest(TravelRequest_id IN TravelRequest.ID%TYPE)
+IS
+BEGIN
+
+  DELETE TravelRequest where id = TravelRequest_ID;
+  
+  COMMIT;
+
+END;
+
+--------------------------------------------------------------------------------
+
+CREATE OR REPLACE PROCEDURE SP_delRole(Role_id IN Role.ID%TYPE)
+IS
+BEGIN
+
+  DELETE Role where id = Role_ID;
+  
+  COMMIT;
+
+END;
+
+--------------------------------------------------------------------------------
+
+CREATE OR REPLACE PROCEDURE SP_delMasterCompany(MasterCompany_id IN MasterCompany.ID%TYPE)
+IS
+BEGIN
+
+  DELETE Role where id = MasterCompany_ID;
+  
+  COMMIT;
+
+END;
+
+--------------------------------------------------------------------------------
+
+CREATE OR REPLACE PROCEDURE SP_delMasterDepartment(MasterDepartment_id IN MasterDepartment.ID%TYPE)
+IS
+BEGIN
+
+  DELETE Role where id = MasterDepartment_ID;
+  
+  COMMIT;
+
+END;
+
+--------------------------------------------------------------------------------
+
+CREATE OR REPLACE PROCEDURE SP_delMasterProvince(MasterProvince_id IN MasterProvince.ID%TYPE)
+IS
+BEGIN
+
+  DELETE Role where id = MasterProvince_ID;
+  
+  COMMIT;
+
+END;
+
+--------------------------------------------------------------------------------
+
+CREATE OR REPLACE PROCEDURE SP_delMasterDistrict(MasterDistrict_id IN MasterDistrict.ID%TYPE)
+IS
+BEGIN
+
+  DELETE Role where id = MasterDistrict_ID;
+  
+  COMMIT;
+
+END;
+
+--------------------------------------------------------------------------------
+
+CREATE OR REPLACE PROCEDURE SP_delMasterSubDistrict(MasterSubDistrict_id IN MasterSubDistrict.ID%TYPE)
+IS
+BEGIN
+
+  DELETE Role where id = MasterSubDistrict_ID;
+  
+  COMMIT;
+
+END;
+
+--------------------------------------------------------------------------------
+
+CREATE OR REPLACE PROCEDURE SP_delMasterVillage(MasterVillage_id IN MasterVillage.ID%TYPE)
+IS
+BEGIN
+
+  DELETE Role where id = MasterVillage_ID;
+  
+  COMMIT;
+
+END;
+
+--------------------------------------------------------------------------------
+
+CREATE OR REPLACE PROCEDURE SP_delMasterPurpose(MasterPurpose_id IN MasterPurpose.ID%TYPE)
+IS
+BEGIN
+
+  DELETE Role where id = MasterPurpose_ID;
+  
+  COMMIT;
+
+END;
+
+--------------------------------------------------------------------------------
+
+CREATE OR REPLACE PROCEDURE SP_delMasterCondition(MasterCondition_id IN MasterCondition.ID%TYPE)
+IS
+BEGIN
+
+  DELETE Role where id = MasterCondition_ID;
+  
+  COMMIT;
+
+END;
+
+--------------------------------------------------------------------------------
+
+CREATE OR REPLACE PROCEDURE SP_delMasterSO(MasterSO_id IN MasterSO.ID%TYPE)
+IS
+BEGIN
+
+  DELETE Role where id = MasterSO_ID;
+  
+  COMMIT;
+
+END;

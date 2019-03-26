@@ -1,0 +1,80 @@
+//----------Function Cek So------------\\
+
+create or replace function funct_cekso(cek_so in varchar)
+  return varchar
+is
+  so varchar(255);
+begin
+  select name into so from masterso where name = cek_so;
+  if (so = cek_so)
+    then so := 'ADA DONG';
+  end if;
+  return(so);
+end;
+
+//----------Function Get Alocation (ParameterTable)------------\\
+
+create or replace function funct_getalocation(idalocat in number)
+return varchar
+is
+ idalocatt varchar(20);
+begin
+ select value  into idalocatt from parametertable
+ where id = idalocat ;
+return(idalocatt);
+end;
+
+//----------Function Update Wages (TravelRequest)------------\\
+
+create or replace function FUNCT_WAGES(traReq_id in number)
+  return number
+is
+  tr_wages travelrequest.wages%type;
+  tr_car_rental travelrequest.car_rental%type;
+  alokasi number;
+  jumlah_hari1 number;
+  jumlah_hari2 number;
+  jumlah_jam1 number;
+  jumlah_jam2 number;
+  alokasi1 varchar(20);
+  alokasi2 varchar(20);
+  alokasi3 varchar(20);
+  alokasi4 varchar(20);
+BEGIN
+  select round(24 * (to_date(to_char(return, 'YYYY-MM-DD hh24:mi'),'YYYY-MM-DD hh24:mi') 
+            - to_date(to_char(departure, 'YYYY-MM-DD hh24:mi'),'YYYY-MM-DD hh24:mi')), 0), car_rental  into tr_wages, tr_car_rental
+  from travelrequest
+  where id  = traReq_id;
+   
+  jumlah_hari1 := round(tr_wages / 24);
+  jumlah_jam1 := (jumlah_hari1*24)-17;
+  jumlah_jam2 := (jumlah_hari1*24)+6;
+
+  if(tr_wages >= jumlah_jam1 and tr_wages <=jumlah_jam2)
+     then 
+        jumlah_hari2 := jumlah_hari1;
+     else
+        dbms_output.put_line('Gak Bisa Ngajuin TRA Loe');
+  end if;
+  if(tr_wages < 168 and tr_car_rental = 'No')
+     then
+         Alokasi := funct_getalocation(1) * jumlah_hari2;
+         dbms_output.put_line('Wages : ' ||alokasi);
+     else if (tr_wages < 168 and tr_car_rental = 'Yes')
+         then
+             Alokasi := funct_getalocation(2) * jumlah_hari2; 
+             dbms_output.put_line('Wages : ' ||alokasi);
+         else if (tr_wages > 168 and tr_car_rental = 'No')
+             then
+                 Alokasi := funct_getalocation(3) * jumlah_hari2; 
+                 dbms_output.put_line('Wages : ' ||alokasi);
+             else if (tr_wages > 168 and tr_car_rental = 'Yes')
+                 then
+                     Alokasi := funct_getalocation(4) * jumlah_hari2; 
+                     dbms_output.put_line('Wages : ' ||alokasi);
+             end if;
+         end if;
+      end if;
+  end if;
+  return(alokasi);
+END;?

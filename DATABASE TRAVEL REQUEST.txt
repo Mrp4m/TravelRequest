@@ -1,0 +1,162 @@
+Create Table
+ MasterUser (
+  Id int not null Primary Key,
+  Name varchar(25),
+  Contact int,
+  Join_date date,
+  Password varchar(25),
+  Email varchar(25),
+  Salary varchar(25),
+  role_id int,
+  department_id int,
+  village_id int
+)
+
+ALTER TABLE MasterUser
+ADD FOREIGN KEY (role_id) REFERENCES role(Id)
+ADD FOREIGN KEY (department_id) REFERENCES masterdepartment(Id)
+ADD FOREIGN KEY (village_id) REFERENCES mastervillage(Id)
+##############################################
+
+Create Table
+ TravelRequest (
+  Id int not null Primary Key,
+  Notes varchar(255),
+  Departure timestamp,
+  Return timestamp,
+  Ticket varchar(25),
+  Payment_Message varchar(255),
+  Status varchar(25),
+  Wages int,
+  So_id int,
+  User_id int,
+  City_id int,
+  Adv_payment_id int,
+  Purpose_id int,
+  Condition_id int,
+  Travel_id int
+)
+
+ALTER TABLE travelrequest
+ADD FOREIGN KEY (so_id) REFERENCES masterso(Id)
+ADD FOREIGN KEY (user_id) REFERENCES masteruser(Id)
+ADD FOREIGN KEY (city_id) REFERENCES masterdistrict(Id)
+ADD FOREIGN KEY (adv_payment_id) REFERENCES advancepayment(Id)
+ADD FOREIGN KEY (purpose_id) REFERENCES masterpurpose(Id)
+ADD FOREIGN KEY (condition_id) REFERENCES mastercondition(Id)
+ADD FOREIGN KEY (travel_id) REFERENCES mastertravelby(Id)
+##############################################
+
+Create Table
+ Role (
+  Id varchar(25) not null Primary Key,
+  Name varchar(255)
+)
+
+##############################################
+
+Create Table
+ MasterProvince (
+  Id int not null Primary Key,
+  Name varchar(255)
+)
+
+##############################################
+
+Create Table
+ MasterDistrict (
+  Id int not null Primary Key,
+  Name varchar(255),
+  Province_id int,
+  FOREIGN KEY (Province_id) REFERENCES MasterProvince(Id)
+)
+
+##############################################
+
+Create Table
+ MasterSubDistrict (
+  Id int not null Primary Key,
+  Name varchar(255),
+  District_id int,
+  FOREIGN KEY (District_id) REFERENCES MasterDistrict(Id)
+)
+
+###############################################
+
+Create Table
+ MasterVillage (
+  Id int not null Primary Key,
+  Name varchar(255),
+  Sub_District_id int,
+  FOREIGN KEY (Sub_District_id) REFERENCES MasterSubDistrict(Id)
+)
+
+################################################
+
+Create Table
+ ParameterTable (
+  Length_of_journey int not null Primary Key,
+  Alokasi int,
+  Condition varchar(255)
+)
+
+##############################################
+
+CREATE TABLE MasterCompany (
+    id number (10) NOT NULL ,
+    name varchar(100),
+    primary key (id)   
+);
+
+**********************************
+
+CREATE TABLE MasterDepartment (
+    id number (10) NOT NULL ,
+    name varchar(100),
+    company_id,
+    FOREIGN KEY (company_id) REFERENCES MasterCompany(Id),
+    primary key (id)   
+);
+
+**********************************
+
+CREATE TABLE MasterSO (
+    id number (10) NOT NULL ,
+    name varchar(100),
+    primary key (id)   
+);
+
+**********************************
+
+CREATE TABLE AdvancePayment (
+    id number (10) NOT NULL ,
+    status number(1),
+    primary key (id)   
+);
+
+**********************************
+
+CREATE TABLE MasterPurpose (
+    id number (10) NOT NULL ,
+    name varchar(100),
+    primary key (id)   
+);
+
+**********************************
+
+CREATE TABLE MasterCondition (
+    id number (10) NOT NULL ,
+    name varchar(100),
+    primary key (id)   
+);
+
+**********************************
+
+CREATE TABLE MasterTravelBy (
+    id number (10) NOT NULL ,
+    name varchar(100),
+    primary key (id)   
+);
+
+**********************************
+
